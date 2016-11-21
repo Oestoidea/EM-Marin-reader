@@ -1,6 +1,3 @@
-// Arduino test sketch for http://arduino-ua.com/prod259-125Khz_RFID_modyl_RDM6300
-// from http://forum.arduino.ua/viewtopic.php?id=345
-
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
