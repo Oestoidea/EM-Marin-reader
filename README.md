@@ -14,7 +14,7 @@ When the module is connected to the COM-port and RFID tag brought closer to the 
 
 ![Arduino_Nano_RDM6300_oled_photo](./pics/Arduino_Nano_RDM6300_oled_2.png)
 
-Also you can watch these tags in the virtual COM-port (without prefixes, checksum, and suffixes).
+Also you can watch these tags in the virtual COM-port (without prefix, checksum, and suffix).
 
 ![Arduino_Nano_RDM6300_oled_photo](./pics/Arduino_Nano_RDM6300_oled_3.png)
 
@@ -28,7 +28,7 @@ On display you can see 10-digit RFID-number and its ASCII code.
 
 ## Arduino Nano
 
-Install [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library) and [Adafruit SSD1306](https://github.com/adafruit/Adafruit_SSD1306) libraries in Arduino IDE. This scanner based on [Test sketch for RFID module RDM6300 125 kHz](http://forum.arduino.ua/viewtopic.php?id=345) (Russian) written by Yojeh (Йожэг).
+Install [Adafruit GFX](https://github.com/adafruit/Adafruit-GFX-Library) and [Adafruit SSD1306](https://github.com/adafruit/Adafruit_SSD1306) libraries in Arduino IDE. This scanner based on [Test sketch for RFID module RDM6300 125 kHz](http://forum.arduino.ua/viewtopic.php?id=345) (Russian) written by Yojeh (Йожэг). Rereading will be ignored.
 
 ## Connection Map
 
