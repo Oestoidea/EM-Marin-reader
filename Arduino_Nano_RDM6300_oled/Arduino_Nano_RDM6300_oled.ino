@@ -12,7 +12,7 @@ Adafruit_SSD1306 display(OLED_RESET);
 
 SoftwareSerial softSerial(10, 11); // recommended pins for RX on Mega: 10, 11, 12...
 int rx_counter;
-byte rx_data[14]; // 1+10+2+1
+byte rx_data[14], rx_data_temp[14]; // 1+10+2+1
 
 void setup() {
   rx_counter = 0; // init counter
@@ -27,6 +27,7 @@ void setup() {
   delay(1000);
   Serial.println("Ready...");
   softSerial.begin(9600);
+  rx_data_temp;
 }
 
 void loop() {
@@ -44,23 +45,25 @@ void loop() {
         for (int i = 0; i < 6; i++) { // data with checksum
           calc_checksum ^= ascii_char_to_num(rx_data[i*2+1]) * 16 + ascii_char_to_num(rx_data[i*2+2]);
         }
-        if (calc_checksum == 0) {
-          Serial.print("ID: ");
-          display.clearDisplay();
-          display.setCursor(0,0);
-          for (int i = 1; i <= 10; i++) {
-            Serial.write(rx_data[i]);
-            display.print((char)rx_data[i]);
+        if (!equal()) {
+          if (calc_checksum == 0) {
+            Serial.print("ID: ");
+            display.clearDisplay();
+            display.setCursor(0,0);
+            for (int i = 1; i <= 10; i++) {
+              Serial.write(rx_data[i]);
+              display.print((char)rx_data[i]);
+            }
+            display.println("  ASCII:");
+            for (int i = 1; i <= 10; i++) {
+              display.print(rx_data[i]);
+            }
+            display.display();
+            Serial.println();
+            memcpy(rx_data_temp, rx_data, 14);
+          } else {
+            Serial.println("Checksum ERROR!");
           }
-          display.println("  ASCII:");
-          for (int i = 1; i <= 10; i++) {
-            display.print(rx_data[i]);
-          }
-          display.display();
-          Serial.println();
-            delay(10000);
-        } else {
-          Serial.println("Checksum ERROR!");
         }
       } else {
           Serial.println("Incorrect packet!");
@@ -74,4 +77,11 @@ byte ascii_char_to_num(byte a) {
   a -= '0'; // 0..9
   if (a > 9) a -= 7; // A..F
   return a;
+}
+
+bool equal(void) {
+  for (int i = 1; i <= 10; i++)
+    if (rx_data[i] != rx_data_temp[i])
+      return false;
+  return true;
 }
