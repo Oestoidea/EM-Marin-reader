@@ -14,7 +14,7 @@ When the module is connected to the COM-port and RFID tag brought closer to the 
 
 ![Arduino_Nano_RDM6300_oled_photo](./pics/Arduino_Nano_RDM6300_oled_2.png)
 
-Also you can watch these tags in the virtual COM-port.
+Also you can watch these tags in the virtual COM-port (without prefixes, checksum, and suffixes).
 
 ![Arduino_Nano_RDM6300_oled_photo](./pics/Arduino_Nano_RDM6300_oled_3.png)
 
