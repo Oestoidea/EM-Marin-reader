@@ -1,22 +1,22 @@
 # EM-Marin reader
 
-EM-Marin reader (EM4100 and EM4102) on Arduino, RDM6300 and OLED.
-
-Spectrum analyzer on Arduino Nano and TI CC2500+PA+LNA with SPI and/or I2C OLED's SSD1306. The spectral width is 2400.01–2503.40 MHz with spacing in 405.456543 kHz on two SPI displays. Displays logo on I2C display. This scheme takes less then 50mA (on 5V).
+EM-Marin reader (EM4100 and EM4102) on Arduino, RDM6300 and OLED (125kHz) for intercom systems.
 
 ## Equipment
 
 1. Arduino Nano v3.0 or Mini Pro (with 3.3V)
-2. RDM6300 ([fritzing part](../fritzing-scheme/RDM6300.fzpz)) with external antenna
+2. RDM6300 ([fritzing part](./fritzing-scheme/RDM6300.fzpz)) with external antenna
 3. OLED 0.91" 128×32 I2C SSD1306
 
-![Arduino_Nano_3oleds_ssd1306_photo](./pics/Arduino_Nano_RDM6300_oled.png)
+![Arduino_Nano_RDM6300_oled_photo](./pics/Arduino_Nano_RDM6300_oled.png)
 
-## Displays and CC2500+PA+LNA Module
+## Display and RDM6300 Module
 
 Connect OLED and RDM6300 to Arduino Nano as shown on the picture.
 
-![Arduino_Nano_3oleds_ssd1306_scheme](./fritzing-scheme/Arduino_Nano_RDM6300_oled_bb.png)
+![Arduino_Nano_RDM6300_oled_scheme](./fritzing-scheme/Arduino_Nano_RDM6300_oled_bb.png)
+
+On display you can see 10-digit RFID-number and its ASCII code.
 
 ## Arduino Nano
 
