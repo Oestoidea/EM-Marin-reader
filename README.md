@@ -8,9 +8,13 @@ EM-Marin reader (EM4100 and EM4102) on Arduino, RDM6300 and OLED (125kHz) for in
 2. RDM6300 ([fritzing part](./fritzing-scheme/RDM6300.fzpz)) with external antenna
 3. OLED 0.91" 128×32 I2C SSD1306
 
-![Arduino_Nano_RDM6300_oled_photo](./pics/Arduino_Nano_RDM6300_oled.png)
+## RDM6300 Module
 
-## Display and RDM6300 Module
+When the module is connected to the COM-port and RFID tag brought closer to the antenna the port immediately transferred its identifier.
+
+![Arduino_Nano_RDM6300_oled_photo](./pics/Arduino_Nano_RDM6300_oled_2.png)
+
+## Display
 
 Connect OLED and RDM6300 to Arduino Nano as shown on the picture.
 
@@ -42,3 +46,5 @@ And also connect ANT1 and ANT2 to external antenna (without polarity).
 ## Implementation
 
 Prototype is assembled in a clear acrylic case for Raspberry Pi, but can be built more compactly.
+
+![Arduino_Nano_RDM6300_oled_photo](./pics/Arduino_Nano_RDM6300_oled.png)
