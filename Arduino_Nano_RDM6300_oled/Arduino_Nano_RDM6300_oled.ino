@@ -13,6 +13,7 @@ Adafruit_SSD1306 display(OLED_RESET);
 SoftwareSerial softSerial(10, 11); // recommended pins for RX on Mega: 10, 11, 12...
 int rx_counter;
 byte rx_data[14], rx_data_temp[14]; // 1+10+2+1
+int number;
 
 void setup() {
   rx_counter = 0; // init counter
@@ -47,6 +48,7 @@ void loop() {
         }
         if (!equal()) {
           if (calc_checksum == 0) {
+            number = 1;
             Serial.print("ID: ");
             display.clearDisplay();
             display.setCursor(0,0);
@@ -54,13 +56,42 @@ void loop() {
               Serial.write(rx_data[i]);
               display.print((char)rx_data[i]);
             }
-            display.println("  ASCII:");
+            display.println("ASCII:");
             for (int i = 1; i <= 10; i++) {
               display.print(rx_data[i]);
             }
             display.display();
             Serial.println();
             memcpy(rx_data_temp, rx_data, 14);
+          } else {
+            Serial.println("Checksum ERROR!");
+          }
+        } else {
+          if (calc_checksum == 0) {
+            number++;
+            Serial.print("ID: ");
+            display.clearDisplay();
+            display.setCursor(0,0);
+            for (int i = 1; i <= 10; i++) {
+              Serial.write(rx_data[i]);
+              display.print((char)rx_data[i]);
+            }
+            display.print("ASCII: ");
+            if (number < 10) {
+              display.print("  ");
+            } else if (number < 100) {
+              display.print(" ");
+            } else if (number == 1000) {
+              display.print("  ");
+              number = 0;
+            }
+            display.print(number);
+            for (int i = 1; i <= 10; i++) {
+              display.print(rx_data[i]);
+            }
+            display.display();
+            Serial.write(" ");
+            Serial.println(number);
           } else {
             Serial.println("Checksum ERROR!");
           }
